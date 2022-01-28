@@ -3,6 +3,7 @@
 1. type any of the directory id's (games) listed below into your browser. (ex. rxtro1.github.io/InfiniteGames/example)
 2. hit enter on the searchbar.
 3. done!
+
 Have Fun!
 
 
