@@ -1,6 +1,0 @@
-1. click on any game that you want to play
-2. it will open up the files of the game
-3. look for the index.html file
-4. click on that file
-5. it should open the game in your browser
-6. done!
