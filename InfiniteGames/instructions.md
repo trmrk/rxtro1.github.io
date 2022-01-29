@@ -19,4 +19,6 @@ rxtro1.github.io/InfiniteGames/Programming-Challenge
 
 rxtro1.github.io/InfiniteGames/SharkGame-idle
 
+rxtro1.github.io/InfiniteGames/Cookie-Clicker
+
 More Coming Soon...
