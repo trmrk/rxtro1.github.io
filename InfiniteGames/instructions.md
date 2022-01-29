@@ -12,3 +12,11 @@ Have Fun!
 rxtro1.github.io/InfiniteGames/CaseClicker
 
 rxtro1.github.io/InfiniteGames/dolla_idle_game
+
+rxtro1.github.io/InfiniteGames/Electric-Clicker
+
+rxtro1.github.io/InfiniteGames/Programming-Challenge
+
+rxtro1.github.io/InfiniteGames/SharkGame-idle
+
+rxtro1.github.io/InfiniteGames/paperio
