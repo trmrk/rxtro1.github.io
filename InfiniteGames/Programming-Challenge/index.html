@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Grzegorz Rozdzialik">
+    <meta name="description" content="A simple Javascript idle game where you begin your journey in the world of programming.">
+    <meta name="keywords" content="TODO">
+
+    <!-- Meta tags for facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Programming Challenge">
+    <meta property="og:site_name" content="Programming Challenge">
+    <meta property="og:image" content="TODO">
+
+    <meta property="og:url" content="TODO">
+    <meta property="og:description" content="A simple Javascript idle game where you begin your journey in the world of programming.">
+
+
+
+    <title>Programming Challenge</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="phones.css">
+
+    <!-- Javascript -->
+    <!-- Libraries -->
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="js.cookie.js"></script>
+
+    <!-- Game code -->
+    <script type="text/javascript" src="achievements.js"></script>
+    <script type="text/javascript" src="upgrades.js"></script>
+    <script type="text/javascript" src="smallProject.js"></script>
+    <script type="text/javascript" src="bigProject.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+</head>
+<body>
+<header id="gameLogo">
+    <h1>Programming Challenge</h1>
+</header>
+
+<section id="gamePanel">
+    <header class="panelTitle">
+        Projects
+    </header>
+
+    <section id="cash">
+        $0
+    </section>
+
+    <section id="powerInfo">
+        <span id="clickPower">0</span> pts/click | <span id="idlePower">0</span> pts/sec
+    </section>
+
+    <section id="smallProject">
+        <section id="smallProjectInfo">
+            <header id="smallProjectTitle">
+                Small project title
+            </header>
+            <div id="rewardAndProgressBar">
+                <section id="smallProjectProgressBar">
+                    <div id="smallProjectProgressBarBackground" class="progressBarBackground"></div>
+                    <div id="smallProjectProgressBarLabel" class="progressBarLabel">0%</div>
+                </section>
+
+                <div id="smallProjectReward">
+                    $<span id="smallProjectRewardAmount">10</span>
+                </div>
+            </div>
+
+
+
+            <div id="smallProjectProgressAmount">
+                <span class="currentAmount">0</span>
+                /
+                <span class="totalAmount">0</span>
+            </div>
+        </section>
+
+        <section id="smallProjectWorkButtonSection">
+            <img src="images/keyboard.png" alt="Work" id="smallProjectWorkButton">
+        </section>
+    </section>
+
+    <section id="bigProject">
+        <header id="bigProjectTitle">
+            Big project title
+        </header>
+
+        <div id="bigProjectReward">
+            $0
+        </div>
+
+        <div class="clear left"></div>
+
+        <div id="bigProjectMainProgressBar">
+            <div id="bigProjectMainProgressBarBackground" class="progressBarBackground"></div>
+            <div id="bigProjectMainProgressBarLabel" class="progressBarLabel">0%</div>
+        </div>
+
+        <div id="bigProjectGoals">
+            <!-- Updated by javascript -->
+            <!--
+            <div class="projectGoal">
+                <div class="goalBarAndAmount">
+                    <div class="projectGoalBar blue">
+                        <div class="progressBarBackground"></div>
+                        <div class="progressBarLabel">0%</div>
+                    </div>
+
+                    <div class="projectGoalAmount">
+                        <span class="currentAmount">0</span>
+                        /
+                        <span class="totalAmount">0</span>
+                    </div>
+                </div>
+
+                <div class="goalButton">
+                    <img src="images/keyboard.png" alt="Work">
+                </div>
+
+                <div class="clear"></div>
+            </div>
+            -->
+        </div>
+    </section>
+</section>
+
+<section id="upgrades" class="sidePanel">
+    <header class="panelTitle">
+        Upgrades <div class="arrow-down"></div>
+    </header>
+
+    <div id="upgradesList">
+        <!-- Updated by Javascript -->
+    </div>
+</section>
+
+<section id="achievements" class="sidePanel">
+    <header class="panelTitle">
+        Achievements <div class="arrow-down"></div>
+    </header>
+
+    <div id="achievementTiles">
+        <!-- Updated by Javascript -->
+    </div>
+
+    <div class="clear"></div>
+
+    <div id="settings">
+        <input type="checkbox" name="autosave" id="autosave" checked><label for="autosave">Autosave</label>
+        <button id="saveButton">Save</button>
+        <button id="loadButton">Load</button>
+        <button id="soundSetting"><img src="images/speaker.png" alt="Sound on" id="soundOn"><img src="images/speaker-off.png" alt="Sound off" id="soundOff"></button>
+        <div id="autosaving">Autosaving...</div>
+    </div>
+</section>
+
+<div class="clear"></div>
+
+<footer>Created by <a href="mailto:voreny.gelio@gmail.com">Grzegorz Rozdzialik</a> & Kinga Wołącewicz. Copyright @ 2015</footer>
+
+<!-- <audio id="cash_in">
+    <source src="sounds/cash_in.mp3" type="audio/mpeg">
+</audio> -->
+</body>
+</html>

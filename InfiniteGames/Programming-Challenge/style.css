@@ -1,0 +1,486 @@
+/* General settings */
+body {
+    width: 100%;
+    margin: 0;
+    font-size: 12pt;
+    position: relative;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+img {
+    border-width: 0;
+}
+
+a {
+    color: #8c6483;
+}
+
+a:hover {
+    color: #9e789e;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+/* Universal use */
+/* Float-clearing div */
+div.clear {
+    clear: both;
+}
+
+div.clear.left {
+    clear: left;
+}
+
+div.clear.right {
+    clear: right;
+}
+
+
+
+/* -------------------------------------------------------------------------------- */
+/* Page's layout */
+#gameLogo {
+    text-align: center;
+    background-image: url("images/background.jpg");
+    background-repeat: repeat-x;
+    height: 200px;
+    padding-top: 50px;
+}
+
+#gameLogo h1 {
+    width: 40%;
+    margin: auto;
+
+    background-color: white;
+    border: solid 1px;
+    padding: 5px 2% 5px 2%;
+    font-size: 2.5em;
+}
+
+.sidePanel {
+    border: solid 1px;
+    background-color: grey;
+    padding: 5px 1% 5px 1%;
+}
+
+.panelTitle {
+    width: 100%;
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 10px;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.arrow-down, .arrow-left {
+    display: none;
+}
+
+
+
+/* -------------------------------------------------------------------------------- */
+/* Achievements */
+#achievements {
+    float: left;
+    width: 33%;
+    position: relative;
+    right: 34%;
+}
+
+#achievementTiles {
+    width: 100%;
+}
+
+.achievementTile {
+    position: relative;
+    width: 19%;
+    float: left;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    margin-bottom: 3px;
+}
+
+.achievementTile img {
+    width: 100%;
+}
+
+.achievementDescription {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+
+    border: solid 1px;
+    background-color: white;
+    padding: 5px;
+    z-index: 2;
+}
+
+.achievementTitle {
+    display: block;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.achievementCover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.6;
+    display: none;
+}
+
+.achievementCover.active {
+    display: block;
+}
+
+#settings {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#soundSetting img {
+    height: 21px;
+}
+
+#autosaving {
+    color: white;
+    margin-top: 10px;
+    display: none;
+}
+
+
+
+
+
+/* -------------------------------------------------------------------------------- */
+/* Upgrades */
+#upgrades {
+    float: right;
+    width: 33%;
+}
+
+#upgradesList {
+    width: 100%;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.upgrade {
+    width: 100%;
+    cursor: pointer;
+    font-size: 1.5em;
+    border: solid 1px;
+    border-top: none;
+    overflow: auto;
+    padding: 2%;
+    background-color: darkgrey;
+}
+
+.affordable {
+    background-color: #215821;
+}
+
+.affordable .name {
+    color: white;
+}
+
+.affordable .effect {
+    color: red;
+}
+
+.upgrade:first-child {
+    border-top: solid 1px;
+}
+
+.cost {
+    float: left;
+    width: 20%;
+    color: #1ea31d;
+}
+
+.name {
+    float: left;
+    width: 35%;
+    margin-left: 5%;
+}
+
+.effect {
+    float: right;
+    width: 35%;
+    margin-left: 5%;
+    color: darkred;
+}
+
+
+
+
+
+
+/* -------------------------------------------------------------------------------- */
+/* Game panel */
+#gamePanel {
+    width: 34%;
+    margin: auto;
+    background-color: darkgrey;
+    padding: 5px 2% 5px 2%;
+    border: solid 1px;
+    float: left;
+    position: relative;
+    left: 33%;
+}
+
+#cash {
+    margin-bottom: 10px;
+    width: 100%;
+
+    text-align: center;
+
+    font-size: 2.5em;
+    color: #1ea31d;
+    font-weight: bold;
+}
+
+#powerInfo {
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+#clickPower, #idlePower {
+    font-weight: bold;
+}
+
+
+
+/* -------------------------------------------------------------------------------- */
+/* Progress bar */
+.progressBarBackground {
+    background-color: green;
+    width: 0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    z-index: 0;
+}
+
+.progressBarLabel {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* -------------------------------------------------------------------------------- */
+/* Small project */
+#smallProject {
+    border-bottom: solid 1px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+#smallProjectTitle {
+    width: 100%;
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 5px;
+    border-top: solid 1px;
+}
+
+#rewardAndProgressBar {
+    margin: auto;
+}
+
+#smallProjectProgressBar {
+    position: relative;
+
+    width: 70%;
+    margin: auto;
+    float: left;
+    padding: 3px;
+    text-align: center;
+
+    background-color: grey;
+    border: solid;
+
+    font-size: 2em;
+}
+
+#smallProjectReward {
+    float: right;
+    text-align: right;
+    width: 25%;
+    line-height: 49px;
+    font-size: 2em;
+}
+
+#smallProjectProgressAmount {
+    width: 100%;
+    float: left;
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 5px;
+}
+
+#smallProjectProgressAmount .currentAmount {
+
+}
+
+#smallProjectProgressAmount .totalAmount {
+
+}
+
+#smallProjectWorkButtonSection {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#smallProjectWorkButton {
+    width: 50%;
+    cursor: pointer;
+}
+
+
+/* -------------------------------------------------------------------------------- */
+/* Big project */
+#bigProject {
+    background-color: white;
+    border: solid 1px;
+    padding: 5px 2% 5px 2%;
+    text-align: center;
+}
+
+#bigProjectTitle {
+    font-size: 2em;
+    margin-bottom: 5px;
+    float: left;
+    width: 70%;
+    text-align: left;
+}
+
+#bigProjectReward {
+    font-size: 2em;
+    float: right;
+    width: 30%;
+    text-align: right;
+}
+
+#bigProjectMainProgressBar {
+    position: relative;
+    width: 90%;
+    margin: auto;
+    background-color: grey;
+    border: solid;
+    font-size: 2em;
+}
+
+#bigProjectProgressAmount {
+
+}
+
+.projectGoal {
+    width: 100%;
+    margin-top: 10px;
+    border-top: solid 1px;
+    padding-top: 10px;
+    overflow: auto;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.goalBarAndAmount {
+    float: left;
+    width: 75%;
+}
+
+.projectGoalBar {
+    position: relative;
+    font-size: 1.5em;
+}
+
+.projectGoalAmount {
+    margin-top: 2px;
+}
+
+.goalButton {
+    float: right;
+    width: 20%;
+    margin-right: 2.5%;
+    cursor: pointer;
+}
+
+.goalButton img {
+    width: 100%;
+}
+
+/* -------------------------------------------------------------------------------- */
+/* Color packs */
+.projectGoalBar.blue {
+    background-color: blue;
+    color: white;
+}
+
+.projectGoalBar.blue .progressBarBackground {
+    background-color: green;
+}
+
+.projectGoalBar.red {
+    background-color: red;
+}
+
+.projectGoalBar.red .progressBarBackground {
+    background-color: green;
+}
+
+
+
+
+/* -------------------------------------------------------------------------------- */
+/* Footer */
+footer {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 0.8em;
+}
+
+
+/* -------------------------------------------------------------------------------- */
+audio {
+    display: none;
+}

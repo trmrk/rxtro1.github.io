@@ -1,0 +1,46 @@
+@media screen and (max-width: 799px) {
+    body {
+        font-size: 10pt;
+    }
+
+    #gameLogo h1 {
+        width: 70%;
+        font-size: 1.8em;
+    }
+    #achievements, #upgrades, #gamePanel {
+        width: 100%;
+    }
+
+    #achievements {
+        right: auto;
+    }
+
+    #gamePanel {
+        left: auto;
+    }
+
+    .panelTitle {
+
+    }
+
+    .arrow-down {
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+
+        border-top: 10px solid black;
+        display: inline-block;
+    }
+
+    .arrow-left {
+        width: 0;
+        height: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+
+        border-right: 10px solid black;
+        display: inline-block;
+    }
+
+}
