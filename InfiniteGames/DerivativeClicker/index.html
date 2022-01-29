@@ -1,0 +1,747 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<link href="jquery-ui-1.10.4.custom.min.css" rel="stylesheet" type="text/css" />
+		<link href="derivative_clicker.css" rel="stylesheet" type="text/css" />
+		<link href="tooltipster.css" rel="stylesheet" type="text/css" />
+		<link href="tooltipster-noir.css" rel="stylesheet" type="text/css" />
+		<title>Derivative Clicker</title>
+		<meta charset="UTF-8">
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+			
+			ga('create', 'UA-49821575-1', 'auto');
+			ga('send', 'pageview');
+		</script>
+	</head>
+<body>
+	<div id="container">
+		<div id="navbar"><a href="newplayer.html" target="_newtab">New Player Guide</a> | <a href="changelog.txt" target="_newtab">Changelog</a> | <a href="http://www.reddit.com/r/derivclicker/" target="_newtab">Subreddit</a> | <a href="https://github.com/gzgreg/DerivativeClicker/tree/gh-pages" target="_newtab">Github</a> | <a id="donateLink">Donate</a></div> 
+		<div id="donate">
+			I hope you're enjoying the game. As a student, your donations are greatly appreciated!<br />
+			<br />
+			<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_newtab" style="text-align: center;">
+				<input type="hidden" name="cmd" value="_s-xclick">
+				<input type="hidden" name="hosted_button_id" value="RMMXB8R5J8GX6">
+				<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+				<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+			</form>
+			<div><img src="img/bitcoin.png" /><span>&nbsp;187WQhKWeaBsav3phqnPbf1JoqkL3mjfdc</span></div><br />
+			<div><img src="img/dogecoin.png" /><span>&nbsp;D91Qq6FWtHF1GPYZ9Q27PKP7oC66Mnbb1G</span></div><br />
+			<button class="buttonLit" id="closeDonate">Close</button>
+		</div>
+		<h1 id="header">Derivative Clicker</h1>
+		<div id="infoContainer">
+			<div class="button" id="moneyButton"><h3 id="moneyButtonText">Click to gain money</h3></div>
+			<div id="info"></div>
+		</div>
+		<!--INFO TABLE-->
+		<script type="text/template" id="moneyTableTemplate">
+		  	<div id="moneyTable">
+		  		<table>
+					<tr>
+						<td>Money:</td>
+						<td>$<%= money %></td>
+						<td class="spacer"></td>
+						<td class="spacer"></td>
+						<td>Proofs:</td>
+						<td><%= proofs %></td>
+					</tr>
+					<tr>
+						<td>Money/tick:</td>
+						<td>$<%= moneyPerSecond %></td>
+						<td class="spacer"></td>
+						<td class="spacer"></td>
+						<td>Proofs/tick:</td>
+						<td><%= proofsPerSecond %></td>
+					</tr>
+					<tr>
+						<td>Net money/tick:</td>
+						<td>$<%= netMoneyPerSecond %></td>
+						<td class="spacer"></td>
+						<td class="spacer"></td>
+						<td>Cost/proof:</td>
+						<td>$5.00</td>
+					</tr>
+				</table>
+			</div>
+			<div id="moneyTable2">
+				<table>
+					<tr>
+						<td id="mPC" colspan=5>Money per manual click: $<%= moneyPerClick %></td>
+					</tr>
+					<tr>
+						<td id="mPAC" colspan=5>Money per autoclick: $<%= moneyPerAutoclick %></td>
+					</tr>
+					<tr>
+						<td id="tickLenCell" colspan="5">Tick length: <%= tickLength %> ms / <%= timeMult %></td>
+					</tr>
+				</table>
+			</div>
+		</script>
+		<!-- Start Tabs -->
+		<div id="tabs">
+			<ul>
+				<li onclick="updateInventory();"><a href="index.html#inventory">Inventory</a></li>
+				<li onclick="updateUpgrades();"><a href="index.html#upgradesContainer">Upgrades</a></li>
+				<li onclick="updatePrestige();"><a href="index.html#prestigeContainer">Prestige</a></li>
+				<li><a href="index.html#options">Options</a></li>
+				<li onclick="updateStats();"><a href="index.html#stats">Statistics</a></li>
+			</ul>
+			<!-- End Tabs -->
+			<!-- Begin Inventory tab -->
+			<div id="inventory">
+				<div id="tableContainer">
+					<div id="firstRows"></div>
+					<div id="row5"></div>
+					<div id="row6"></div>
+					<div id="row7"></div>
+				</div>
+				<div id="numToBuyContainer"><p>Enter number to buy at once(currently <span id="currentNumToBuy" class="strong"></span>): <input type="number" id="numToBuy"><span class="buttonLit submitNumToBuy" onclick="getNumToBuy($('#numToBuy').val())">Submit</span></p>
+				<p>Or, <span class="buttonLit submitNumToBuy" onclick="getNumToBuy(-1)">Buy Maximum</span></p></div>
+			</div>
+			<script type="text/template" id="inventoryTemplate">
+				<table id="inventoryTable">
+					<!--------- 
+						ROW 1 
+					----------->
+					<tr id="row1">
+						<td id="deriv1" class="button" onmousedown="buyBuilding(0)">
+							<h3>1st Derivative</h3>
+							<p><%= deriv1Power %>$/tick: costs $<%= deriv1Cost %>.</p> 
+							<p>Owned: <%= deriv1Owned %> (<%= deriv1Manual %>)</p>
+						</td>
+						<td class="spacer"></td>
+						<td id="combinatorics" class="button" onmousedown="buyBuilding(1)">
+							<h3>Combinatorics</h3>
+							<p><%= combinatoricsPower %> proof/tick: costs $<%= combinatoricsCost %>.</p>
+							<p> Owned: <%= combinatoricsOwned %> (<%= combinatoricsManual %>)</p>
+						</td>
+						<td class="spacer"></td>
+						<td id="computer" class= "button" onmousedown="buyBuilding(2)">
+							<h3>Computer</h3>
+							<p><%= computerPower %>$/tick: costs <%= computerCost %> proofs.</p>
+							<p>Owned: <%= computerOwned %> (<%= computerManual %>)</p>
+						</td>
+						<td class="spacer"></td>
+						<td id="highSchooler" class="button" onmousedown="buyBuilding(3)">
+							<h3>High Schooler</h3>
+							<p><%= highSchoolerPower %>$/click: costs $<%= highSchoolerCost %>.</p>
+							<p>Owned: <%= highSchoolerOwned %> (<%= highSchoolerManual %>)</p>
+						</td>
+						<td class="spacer"></td>
+						<td id="mathematician" class="button" onmousedown="buyBuilding(4)">
+							<h3>Mathematician</h3>
+							<p>Faster ticks: costs $<%= mathematicianCost %>.</p>
+							<p>Owned: <%= mathematicianOwned %> (<%= mathematicianManual %>)</p>
+						</td>
+					</tr>
+					<!------------
+						ROW 2
+					------------->
+					<tr>
+						<td id="deriv2" class="button" onmousedown="buyBuilding(5)">
+							<h3>2nd Derivative</h3>
+							<p><%= deriv2Power %> 1st derivative/<%= buildingPeriod %> ticks: costs $<%= deriv2Cost %>.</p>
+							<p>Owned: <%= deriv2Owned %> (<%= deriv2Manual %>)</p>
+						</td>
+						<td class="spacer"></td>
+						<td id="probability" class="button" onmousedown="buyBuilding(6)">
+							<h3>Probability</h3>
+							<p><%= probabilityPower %> combinatorics/<%= buildingPeriod %> ticks: costs $<%= probabilityCost %></p>
+							<p>Owned: <%= probabilityOwned %> (<%= probabilityManual %>)</p>
+						</td>
+						<td class="spacer"></td>
+						<td id="assemblyLine" class= "button" onmousedown="buyBuilding(7)">
+							<h3>Assembly Line</h3>
+							<p><%= assemblyLinePower %> computers/<%= buildingPeriod %> ticks: costs <%= assemblyLineCost %> proofs.</p>
+							<p>Owned: <%= assemblyLineOwned %> (<%= assemblyLineManual %>)</p>
+						</td>
+						<td class="spacer"></td>
+						<td id="undergraduate" class="button" onmousedown="buyBuilding(8)">
+							<h3>Undergraduate</h3>
+							<p><%= undergraduatePower %> high schooler/<%= clicksToGain %> clicks: costs $<%= undergraduateCost %>.</p>
+							<p>Owned: <%= undergraduateOwned %> (<%= undergraduateManual %>)</p>
+						</td>
+						<td class="spacer"></td>
+						<td id="andrewWiles" class="button" onmousedown="buyBuilding(9)">
+							<h3>Andrew Wiles</h3>
+							<p><%= andrewWilesPower %> mathematician/<%= buildingPeriod %> ticks: costs $<%= andrewWilesCost %>.</p>
+							<p>Owned: <%= andrewWilesOwned %> (<%= andrewWilesManual %>)</p>
+						</td>
+					</tr>
+					<!-----------
+						ROW 3
+					------------->
+					<tr>
+						<td id="deriv3" class="button" onmousedown="buyBuilding(10)">
+							<h3>3rd Derivative</h3>
+							<p><%= deriv3Power %> 2nd derivative/<%= buildingPeriod %> ticks: costs $<%= deriv3Cost %>.</p>
+							<p>Owned: <%= deriv3Owned %> (<%= deriv3Manual %>)</p>
+						</td>
+						<td class="spacer"></td>
+						<td id="numberTheory" class="button" onmousedown="buyBuilding(11)">
+							<h3>Number Theory</h3>
+							<p><%= numberTheoryPower %> probability/<%= buildingPeriod %> ticks: costs $<%= numberTheoryCost %></p>
+							<p>Owned: <%= numberTheoryOwned %> (<%= numberTheoryManual %>)</p>
+						</td>
+						<td class="spacer"></td>
+						<td id="factory" class= "button" onmousedown="buyBuilding(12)">
+							<h3>Factory</h3>
+							<p><%= factoryPower %> assembly lines/<%= buildingPeriod %> ticks: costs <%= factoryCost %> proofs.</p>
+							<p>Owned: <%= factoryOwned %> (<%= factoryManual %>)</p>
+						</td>
+						<td class="spacer"></td>
+						<td id="graduateStudent" class="button" onmousedown="buyBuilding(13)">
+							<h3>Graduate Student</h3>
+							<p><%= graduateStudentPower %> undergraduate/<%= clicksToGain %> clicks: costs $<%= graduateStudentCost %>.</p>
+							<p>Owned: <%= graduateStudentOwned %> (<%= graduateStudentManual %>)</p>
+						</td>
+						<td class="spacer"></td>
+						<td id="kurtGodel" class="button" onmousedown="buyBuilding(14)">
+							<h3>Kurt Gödel</h3>
+							<p><%= kurtGodelPower %> Wiles/<%= buildingPeriod %> ticks: costs $<%= kurtGodelCost %>.</p>
+							<p>Owned: <%= kurtGodelOwned %> (<%= kurtGodelManual %>)</p>
+						</td>
+					</tr>
+				   <!-----------
+				   		ROW 4
+				   	------------>
+				   <tr>
+						<td id="deriv4" class="button" onmousedown="buyBuilding(15)">
+						   <h3>4th Derivative</h3>
+						   <p><%= deriv4Power %> 3rd derivative/<%= buildingPeriod %> ticks: costs $<%= deriv4MoneyCost %> and <%= deriv4WidgetCost %> proofs.</p>
+						   <p>Owned: <%= deriv4Owned %> (<%= deriv4Manual %>)</p>
+						</td>
+						<td class="spacer"></td>
+						<td id="calculus" class="button" onmousedown="buyBuilding(16)">
+							<h3>Calculus</h3>
+							<p><%= calculusPower %> number theory/<%= buildingPeriod %> ticks: costs $<%= calculusCost %></p>
+							<p>Owned: <%= calculusOwned %> (<%= calculusManual %>)</p>
+						</td>
+						<td class="spacer"></td>
+						<td id="factoryArchitect" class= "button" onmousedown="buyBuilding(17)">
+							<h3>Factory Architect</h3>
+							<p><%= factoryArchitectPower %> factories/<%= buildingPeriod %> ticks: costs <%= factoryArchitectCost %> proofs.</p>
+							<p>Owned: <%= factoryArchitectOwned %> (<%= factoryArchitectManual %>)</p>
+						</td>
+						<td class="spacer"></td>
+						<td id="postdoc" class="button" onmousedown="buyBuilding(18)">
+							<h3>Postdoc</h3>
+							<p><%= postdocPower %> graduate student/<%= clicksToGain %> clicks: costs $<%= postdocCost %>.</p>
+							<p>Owned: <%= postdocOwned %> (<%= postdocManual %>)</p>
+						</td>
+						<td class="spacer"></td>
+						<td id="georgRiemann" class="button" onmousedown="buyBuilding(19)">
+							<h3>Bernhard Riemann</h3>
+							<p><%= georgRiemannPower %> Gödel/<%= buildingPeriod %> ticks: costs $<%= georgRiemannCost %>.</p>
+							<p>Owned: <%= georgRiemannOwned %> (<%= georgRiemannManual %>)</p>
+						</td>
+					</tr>
+				</table>
+			</script>
+			<script type="text/template" id="row5Template">
+				<table id="row5Table">
+					<!--------- 
+						ROW 5 
+					----------->
+					<tr>
+						<td id="deriv5" class="button" onmousedown="buyBuilding(20)">
+							<h3>5th Derivative</h3>
+							<p><%= deriv5Power %> 4th derivative/<%= buildingPeriod %> ticks: costs $<%= deriv5MoneyCost %> and <%= deriv5ProofCost %> proofs.</p> 
+							<p>Owned: <%= deriv5Owned %> (<%= deriv5Manual %>)</p>
+						</td>
+						<td class="spacer"></td>
+						<td id="algebra" class="button" onmousedown="buyBuilding(21)">
+							<h3>Algebra</h3>
+							<p><%= algebraPower %> calculus/<%= buildingPeriod %> ticks: costs $<%= algebraCost %></p>
+							<p>Owned: <%= algebraOwned %> (<%= algebraManual %>)</p>
+						</td>
+						<td class="spacer"></td>
+						<td id="designSchool" class="button" onmousedown="buyBuilding(22)">
+							<h3>Design School</h3>
+							<p><%= designSchoolPower %> architects/<%= buildingPeriod %> ticks: costs <%= designSchoolCost %> proofs.</p>
+							<p>Owned: <%= designSchoolOwned %> (<%= designSchoolManual %>)</p>
+						</td>
+						<td class="spacer"></td>
+						<td id="researchScientist" class="button" onmousedown="buyBuilding(23)">
+							<h3>Research Scientist</h3>
+							<p><%= researchScientistPower %> postdoc/<%= clicksToGain %> clicks: costs $<%= researchScientistCost %>.</p>
+							<p>Owned: <%= researchScientistOwned %> (<%= researchScientistManual %>)</p>
+						</td>
+						<td class="spacer"></td>
+						<td id="carlGauss" class="button" onmousedown="buyBuilding(24)">
+							<h3>Carl Gauss</h3>
+							<p><%= carlGaussPower %> Riemann/<%= buildingPeriod %> ticks: costs $<%= carlGaussCost %>.</p>
+							<p>Owned: <%= carlGaussOwned %> (<%= carlGaussManual %>)</p>
+						</td>
+					</tr>
+				</table>
+			</script>
+			<script type="text/template" id="row6Template">
+				<table id="row6Table">
+					<!--------- 
+						ROW 6 
+					----------->
+					<tr>
+						<td id="deriv6" class="button" onmousedown="buyBuilding(25)">
+							<h3>6th Derivative</h3>
+							<p><%= deriv6Power %> 5th derivative/<%= buildingPeriod %> ticks: costs $<%= deriv6MoneyCost %> and <%= deriv6ProofCost %> proofs.</p> 
+							<p>Owned: <%= deriv6Owned %> (<%= deriv6Manual %>)</p>
+						</td>
+						<td class="spacer"></td>
+						<td id="geometry" class="button" onmousedown="buyBuilding(26)">
+							<h3>Geometry</h3>
+							<p><%= geometryPower %> algebra/<%= buildingPeriod %> ticks: costs $<%= geometryCost %>.</p>
+							<p> Owned: <%= geometryOwned %> (<%= geometryManual %>)</p>
+						</td>
+						<td class="spacer"></td>
+						<td id="deanArchitecture" class="button" onmousedown="buyBuilding(27)">
+							<h3>Dean of Architecture</h3>
+							<p><%= deanArchitecturePower %> schools/<%= buildingPeriod %> ticks: costs <%= deanArchitectureCost %> proofs.</p>
+							<p>Owned: <%= deanArchitectureOwned %> (<%= deanArchitectureManual %>)</p>
+						</td>
+						<td class="spacer"></td>
+						<td id="labManager" class="button" onmousedown="buyBuilding(28)">
+							<h3>Lab Manager</h3>
+							<p><%= labManagerPower %> scientist/<%= clicksToGain %> clicks: costs $<%= labManagerCost %>.</p>
+							<p>Owned: <%= labManagerOwned %> (<%= labManagerManual %>)</p>
+						</td>
+						<td class="spacer"></td>
+						<td id="leonhardEuler" class="button" onmousedown="buyBuilding(29)">
+							<h3>Leonhard Euler</h3>
+							<p><%= leonhardEulerPower %> Gauss/<%= buildingPeriod %> ticks: costs $<%= leonhardEulerCost %>.</p>
+							<p>Owned: <%= leonhardEulerOwned %> (<%= leonhardEulerManual %>)</p>
+						</td>
+					</tr>
+				</table>
+			</script>
+			<script type="text/template" id="row7Template">
+				<table id="row7Table">
+					<!--------- 
+						ROW 6 
+					----------->
+					<tr>
+						<td id="deriv7" class="button" onmousedown="buyBuilding(30)">
+							<h3>7th Derivative</h3>
+							<p><%= deriv7Power %> 6th derivative/<%= buildingPeriod %> ticks: costs $<%= deriv7MoneyCost %> and <%= deriv7ProofCost %> proofs.</p> 
+							<p>Owned: <%= deriv7Owned %> (<%= deriv7Manual %>)</p>
+						</td>
+						<td class="spacer"></td>
+						<td id="arithmetic" class="button" onmousedown="buyBuilding(31)">
+							<h3>Arithmetic</h3>
+							<p><%= arithmeticPower %> geometry/<%= buildingPeriod %> ticks: costs $<%= arithmeticCost %>.</p>
+							<p> Owned: <%= arithmeticOwned %> (<%= arithmeticManual %>)</p>
+						</td>
+						<td class="spacer"></td>
+						<td id="chancellor" class="button" onmousedown="buyBuilding(32)">
+							<h3>Chancellor</h3>
+							<p><%= chancellorPower %> deans/<%= buildingPeriod %> ticks: costs <%= chancellorCost %> proofs.</p>
+							<p>Owned: <%= chancellorOwned %> (<%= chancellorManual %>)</p>
+						</td>
+						<td class="spacer"></td>
+						<td id="researchLab" class="button" onmousedown="buyBuilding(33)">
+							<h3>Research Lab</h3>
+							<p><%= researchLabPower %> lab manager/<%= clicksToGain %> clicks: costs $<%= researchLabCost %>.</p>
+							<p>Owned: <%= researchLabOwned %> (<%= researchLabManual %>)</p>
+						</td>
+						<td class="spacer"></td>
+						<td id="isaacNewton" class="button" onmousedown="buyBuilding(34)">
+							<h3>Isaac Newton</h3>
+							<p><%= isaacNewtonPower %> Euler/<%= buildingPeriod %> ticks: costs $<%= isaacNewtonCost %>.</p>
+							<p>Owned: <%= isaacNewtonOwned %> (<%= isaacNewtonManual %>)</p>
+						</td>
+					</tr>
+				</table>
+			</script>
+			<!-- End Inventory Tab -->
+			<!-- Begin Upgrades Tab -->
+			<div id="upgradesContainer">
+				<div id="upgrades"></div>
+				<div id="numToBuyContainer2"><p>Enter number to buy at once(currently <span id="currentNumToBuy2" class="strong"></span>): <input type="number" id="numToBuy2"><span class="buttonLit submitNumToBuy" onclick="getNumToBuy($('#numToBuy2').val())">Submit</span></p>
+				<p>Or, <span class="buttonLit submitNumToBuy" onclick="getNumToBuy(-1)">Buy Maximum</span></p></div>
+			</div>
+			<script id="upgradesTemplate" type="text/template">
+				<table id="upgradesTable">
+					<tr>
+						<td id="tier1Upgrade" class="button" onmousedown="buyTierUpgrade(0)">
+							<h3>Upgrade 1st Tier</h3>
+							<p>Costs: $<%= tier1UpgradeCost %>.</p>
+							<p>Owned: <%= tier1UpgradeOwned %></p>
+						</td>
+						<td class="spacer"></td>
+						<td>
+							Boosts all 1st tier buildings by 0.05% per 1st tier building manually bought, each. <span class="strong">Current 1st tier multiplier: <%= tier1Mult %></span>
+						</td>
+					</tr>
+					<tr>
+						<td id="tier2Upgrade" class="button" onmousedown="buyTierUpgrade(1)">
+							<h3>Upgrade 2nd Tier</h3>
+							<p>Costs: $<%= tier2UpgradeCost %>.</p>
+							<p>Owned: <%= tier2UpgradeOwned %></p>
+						</td>
+						<td class="spacer"></td>
+						<td>
+							Boosts all 2nd tier buildings by 0.2% per 2nd tier building manually bought, each. <span class="strong">Current 2nd tier multiplier: <%= tier2Mult %></span>
+						</td>
+					</tr>
+					<tr>
+						<td id="tier3Upgrade" class="button" onmousedown="buyTierUpgrade(2)">
+							<h3>Upgrade 3rd Tier</h3>
+							<p>Costs: $<%= tier3UpgradeCost %>.</p>
+							<p>Owned: <%= tier3UpgradeOwned %></p>
+						</td>
+						<td class="spacer"></td>
+						<td>
+							Boosts all 3rd tier buildings by 0.5% per 3rd tier building manually bought, each. <span class="strong">Current 3rd tier multiplier: <%= tier3Mult %></span>
+						</td>
+					</tr>
+					<tr>
+						<td id="tier4Upgrade" class="button" onmousedown="buyTierUpgrade(3)">
+							<h3>Upgrade 4th Tier</h3>
+							<p>Costs: $<%= tier4UpgradeCost %>.</p>
+							<p>Owned: <%= tier4UpgradeOwned %></p>
+						</td>
+						<td class="spacer"></td>
+						<td>
+							Boosts all 4th tier buildings by 1% per 4th tier building manually bought, each. <span class="strong">Current 4th tier multiplier: <%= tier4Mult %></span>
+						</td>
+					</tr>
+					<tr id="tier5UpgradeRow">
+						<td id="tier5Upgrade" class="button" onmousedown="buyTierUpgrade(4)">
+							<h3>Upgrade 5th Tier</h3>
+							<p>Costs: $<%= tier5UpgradeCost %>.</p>
+							<p>Owned: <%= tier5UpgradeOwned %></p>
+						</td>
+						<td class="spacer"></td>
+						<td id="ifUnlocked5">
+							Boosts all 5th tier buildings by 2% per 5th tier building manually bought, each. <span class="strong">Current 5th tier multiplier: <%= tier5Mult %></span>
+						</td>
+					</tr>
+					<tr id="tier6UpgradeRow">
+						<td id="tier6Upgrade" class="button" onmousedown="buyTierUpgrade(5)">
+							<h3>Upgrade 6th Tier</h3>
+							<p>Costs: $<%= tier6UpgradeCost %>.</p>
+							<p>Owned: <%= tier6UpgradeOwned %></p>
+						</td>
+						<td class="spacer"></td>
+						<td id="ifUnlocked6">
+							Boosts all 6th tier buildings by 4% per 6th tier building manually bought, each. <span class="strong">Current 6th tier multiplier: <%= tier6Mult %></span>
+						</td>
+					</tr>
+					<tr id="tier7UpgradeRow">
+						<td id="tier7Upgrade" class="button" onmousedown="buyTierUpgrade(6)">
+							<h3>Upgrade 7th Tier</h3>
+							<p>Costs: $<%= tier7UpgradeCost %>.</p>
+							<p>Owned: <%= tier7UpgradeOwned %></p>
+						</td>
+						<td class="spacer"></td>
+						<td id="ifUnlocked7">
+							Boosts all 7th tier buildings by 6% per 7th tier building manually bought, each. <span class="strong">Current 7th tier multiplier: <%= tier7Mult %></span>
+						</td>
+					</tr>
+					<tr>
+						<td id="autoclicker" class="button" onmousedown="buyUpgrade(0)">
+							<h3>Autoclicker</h3>
+							<p>Costs: $<%= autoclickerCost %>.</p>
+							<p>Owned: <%= autoclickerOwned %></p>
+						</td>
+						<td class="spacer"></td>
+						<td>
+							Clicks once every <%= autoclickInterval %> ticks.
+						</td>
+					</tr>
+					<tr>
+						<td id="manualClickBooster" class="button" onmousedown="buyUpgrade(1)">
+							<h3>Click Booster</h3>
+							<p>Costs: $<%= manualClickBoosterCost %>.</p>
+							<p>Owned: <%= manualClickBoosterOwned %></p>
+						</td>
+						<td class="spacer"></td>
+						<td>
+							Increases power of manual clicks by 1. <span class="strong">Current power: <%= clickPower %></span>
+						</td>
+					</tr>
+				</table>							
+			</script>
+			<!-- End Upgrades Tab -->
+			<!-- Begin Options Tab -->
+			<div id="options">
+				<table id="optionTable">
+					<tr>
+						<td class="buttonLit option" id="wipe" onclick="wipe()">Wipe Save</td>
+						<td class="spacer"></td>
+						<td>Warning: This cannot be undone!</td>
+					</tr>
+					<tr>
+						<td class="buttonLit option" id="toggleChart" onclick="$(&quot;#chartStuff&quot;).toggle(); enableChart = !enableChart">Toggle Chart</td>
+						<td class="spacer"></td>
+						<td>Toggle chart off to increase speed of game.</td>
+					</tr>
+					<tr>
+						<td class="buttonLit option" id="save" onclick="save()">Save</td>
+						<td class="spacer"></td>
+						<td>Last save time: <span id="lastSave">None</span></td>
+					</tr>
+					<tr>
+						<td class="buttonLit option" id="exportSave" onclick="exportSave()">Export Save</td>
+						<td class="spacer"></td>
+						<td id="exportSaveContents" style="display: none">
+							Copy this text:
+							<input id="exportSaveText" type="text" readonly>
+						</td>
+					</tr>
+					<tr>
+						<td class="buttonLit option" id="importSave" onclick="importSave()">Import Save</td>
+						<td class="spacer" colspan="2"></td>
+					</tr>
+					<tr>
+						<td class="buttonLit option" onclick="toggleSciNotation()">Toggle Numbers</td>
+						<td class="spacer"></td>
+						<td>Toggles numbers between suffixes and scientific.</td>
+					</tr>
+					<tr>
+						<td class="buttonLit option" id="selectMinTickLength" onclick="setMinTickLength()">Set Tick Speed</td>
+						<td class="spacer"></td>
+						<td>Sets the minimum tick length for time multiplier activation. Currently <span id="minTickLength">100</span> ms.</td>
+					</tr>
+				</table>
+			</div>
+			<!-- End Options Tab -->
+			<!-- Begin Stats Tab -->
+			<div id="stats">
+				<div id="statAchievementContainer">
+					<div id="statContainer"></div>
+					<p class="strong">Achievements (<span id="numAchievementsEarned"></span> / <span id="numAchievementsTotal"></span>)</p>
+					<div id="achievementContainer"></div>
+				</div>
+				<div id="chartStuff">
+					<div id="chartContainer"></div>
+					<div class="buttonLit" id="chartAxisToggle">Toggle Chart Axis</div>
+					<div id="chartSettings">
+						<input id="chartPointDelay" type="number" placeholder="Delay (ms)" />
+						<input id="chartNumPoints" type="number" placeholder="# points" />
+						<div class="buttonLit" id="submitChartSettings">Submit</div>
+					</div>
+				</div>
+			</div>
+			<script type="text/template" id="statsTemplate">
+				<table id="statTable">
+					<tr>
+						<td>Total money earned:</td>
+						<td>$<%= totalMoneyEarned %></td>
+					</tr>
+					<tr>
+						<td>Total proofs found: </td>
+						<td><%= totalProofs %></td>
+					</tr>
+					<tr>
+						<td>Total reset currency gained: </td>
+						<td><%= totalResetCurr %> (<%= totalCurrByProof %> by proofs, <%= totalCurrByMaths %> by mathematicians)</td>
+					</tr>
+					<tr>
+						<td>Total clicks: </td>
+						<td><%= totalClicks %></td>
+					</tr>
+					<tr>
+						<td>Total manual clicks: </td>
+						<td><%= totalManualClicks %></td>
+					</tr>
+					<tr>
+						<td>Total ticks: </td>
+						<td><%= totalTicks %></td>
+					</tr>
+					<tr>
+						<td>Time multiplier: </td>
+						<td><%= timeMult %></td>
+					</tr>
+				</table>
+			</script>
+			<!-- End Stats Tab -->
+			<div id="prestigeContainer">
+				<div class="buttonLit" id="reset" onmousedown="reset(JSON.parse($(&quot;#resetTier&quot;).val()))">Reset</div>
+				Reset to gain various bonuses. Choose tier: 
+				<select id="resetTier">
+					<option value="1">Tier 1</option>
+					<option value="2">Tier 2</option>
+					<option value="3">Tier 3</option>
+					<option value="4">Tier 4</option>
+					<option value="5">Tier 5</option>
+					<option value="6">Tier 6</option>
+				</select>
+				<br />
+				<div id="prestige"></div>
+				<div id="resetCurrBuyables">
+					<table id="resetCurrTable">
+						<thead><td>Buyables</td></thead>
+						<tr>
+							<td>
+								<div class="button" onmousedown="buyCurrBuyable(0)">T</div>
+								<div class="button" onmousedown="buyCurrBuyable(6)">C</div>
+								<div class="button" onmousedown="buyCurrBuyable(12)">B</div>
+								<div class="button" onmousedown="buyCurrBuyable(18)">A</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="button" onmousedown="buyCurrBuyable(1)">T</div>
+								<div class="button" onmousedown="buyCurrBuyable(7)">C</div>
+								<div class="button" onmousedown="buyCurrBuyable(13)">B</div>
+								<div class="button" onmousedown="buyCurrBuyable(19)">A</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="button" onmousedown="buyCurrBuyable(2)">T</div>
+								<div class="button" onmousedown="buyCurrBuyable(8)">C</div>
+								<div class="button" onmousedown="buyCurrBuyable(14)">B</div>
+								<div class="button" onmousedown="buyCurrBuyable(20)">A</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="button" onmousedown="buyCurrBuyable(3)">F</div>
+								<div class="button" onmousedown="buyCurrBuyable(9)">C</div>
+								<div class="button" onmousedown="buyCurrBuyable(15)">B</div>
+								<div class="button" onmousedown="buyCurrBuyable(21)">R</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="button" onmousedown="buyCurrBuyable(4)">F</div>
+								<div class="button" onmousedown="buyCurrBuyable(10)">C</div>
+								<div class="button" onmousedown="buyCurrBuyable(16)">B</div>
+								<div class="button" onmousedown="buyCurrBuyable(22)">R</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="button" onmousedown="buyCurrBuyable(5)">F</div>
+								<div class="button" onmousedown="buyCurrBuyable(11)">C</div>
+								<div class="button" onmousedown="buyCurrBuyable(17)">B</div>
+								<div class="button" onmousedown="buyCurrBuyable(23)">R</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<script type="text/template" id="prestigeTemplate">
+				<table id="prestigeTable">
+					<thead>
+						<td>Tier</td>
+						<td># Resets</td>
+						<td>Reset currency</td>
+						<td>Multiplier</td>
+						<td>Currency to gain on reset</td>
+					</thead>
+					<tr>
+						<td>1</td>
+						<td><%= tier1Resets %></td>
+						<td><%= tier1ResetCurr %></td>
+						<td><%= tier1GlobalMult %></td>
+						<td><%= tier1CurrTracker %></td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td><%= tier2Resets %></td>
+						<td><%= tier2ResetCurr %></td>
+						<td><%= tier2GlobalMult %></td>
+						<td><%= tier2CurrTracker %></td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td><%= tier3Resets %></td>
+						<td><%= tier3ResetCurr %></td>
+						<td><%= tier3GlobalMult %></td>
+						<td><%= tier3CurrTracker %></td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td><%= tier4Resets %></td>
+						<td><%= tier4ResetCurr %></td>
+						<td><%= tier4GlobalMult %></td>
+						<td><%= tier4CurrTracker %></td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td><%= tier5Resets %></td>
+						<td><%= tier5ResetCurr %></td>
+						<td><%= tier5GlobalMult %></td>
+						<td><%= tier5CurrTracker %></td>
+					</tr>
+					<tr>
+						<td>6</td>
+						<td><%= tier6Resets %></td>
+						<td><%= tier6ResetCurr %></td>
+						<td><%= tier6GlobalMult %></td>
+						<td><%= tier6CurrTracker %></td>
+					</tr>
+				</table>
+				<br />
+				<table id="prestigeDataTable">
+					<tr id="proofsToCurr">
+						<td>Proofs to tier 1 reset currency:</td>
+						<td><%= proofsToNextCurr %> / <%= proofsToNextCurrMax %> (+<%= proofsPerTick %> Proofs/tick)</td>
+					</tr>
+					<tr id="proofCurrPerTick">
+						<td>Reset currency per tick from proofs:</td>
+						<td><%= proofCurrPerTick %></td>
+					</tr>
+					<tr id="mathematiciansToCurr">
+						<td>Mathematicians to tier 1 reset currency:</td>
+						<td><%= mathematiciansToNextCurr %> / <%= mathematiciansToNextCurrMax %> (+<%= mathematiciansPerPeriod %> Mathematicians/<%= buildingPeriod %> ticks)</td>
+					</tr>
+					<tr id="mathematicianCurrPerTick">
+						<td>Reset currency per 10 ticks from mathematicians:</td>
+						<td><%= mathematicianCurrPerTick %></td>
+					</tr>
+				</table>
+			</script>
+		</div>
+		<script type="text/template" id="infiniTemplate">
+			Infini-currency: <%= infiniCurr %>
+		</script>
+		<!-- End Tab Content -->
+	</div>
+	<p id="bottom">Version <span id="version"></span></p>
+	
+	<script src="http://gzgreg.github.io/DerivativeClicker/js/libs/jquery-1.10.2.js"></script>
+	<script src="http://gzgreg.github.io/DerivativeClicker/js/libs/jquery-ui-1.10.4.custom.min.js"></script>
+	<script src="http://gzgreg.github.io/DerivativeClicker/js/libs/underscore-min.js"></script>
+	<script src="http://gzgreg.github.io/DerivativeClicker/js/libs/highcharts/js/highcharts.js"></script>
+	<script src="http://gzgreg.github.io/DerivativeClicker/js/libs/jquery.tooltipster.min.js"></script>
+	
+	<script src="js/building.js"></script>
+	<script src="http://cdn.jsdelivr.net/underscorejs/1.6.0/underscore-min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+	<script src="http://code.highcharts.com/highcharts.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.0.5/js/jquery.tooltipster.min.js"></script>
+	<script src="js/data.js"></script>
+	<script src="js/script.js"></script>
+	<script src="js/charts.js"></script>
+	
+	<script>
+	$("#donateLink").click(function() {
+	    var pos = $(this).position();
+	
+	    // .outerWidth() takes into account border and padding.
+	    var width = $(this).outerWidth();
+	
+	    //show the menu directly over the placeholder
+	    $("#donate").css({
+	        position: "absolute",
+	        top: pos.top + "px",
+	        left: (pos.left + width) + "px"
+	    }).toggle();
+	});
+	
+	$("#closeDonate").click(function(){
+		$("#donate").hide();
+	})
+	</script>
+</html>
+          

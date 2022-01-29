@@ -1,0 +1,33 @@
+* {
+	font-family: Cambria, sans-serif;
+	white-space: pre-line;
+}
+
+h1, h2, h3 {
+	display: inline-block;
+}
+
+h2 {
+	font-size: 28px;
+}
+h3 {
+	font-size: 22px;
+}
+
+.emph {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.col1 {
+	float: left;
+	width: 15%;
+}
+
+.col1 div {
+	font-weight: bold;
+}
+
+.col2 {
+	width: 80%;
+}

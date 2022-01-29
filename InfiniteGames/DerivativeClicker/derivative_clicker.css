@@ -1,0 +1,390 @@
+* {
+    font-family: Cambria, sans-serif;
+}
+
+html {
+	overflow-y: scroll;
+}
+
+body {
+	background-color: #FCFBD4;
+	height: 100%;
+}
+
+#navbar {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+#navbar a {
+	text-decoration: none;
+}
+
+#donateLink {
+	text-decoration: underline;
+	color: #0000ff;
+	cursor: pointer;
+}
+
+#donate {
+	z-index: 20;
+	border: solid #000000 1px;
+	background-color: #ffffff;
+	border-radius: 4px;
+	width: 380px;
+	float: right;
+	position: absolute;
+	display: none;
+	padding: 10px;
+}
+
+#donate div{
+	height: 50px;
+	line-height: 50px;
+}
+
+#donate div span {
+	vertical-align: top;
+	display: inline-block;
+}
+
+#closeDonate {
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	text-align: center;
+	font-size: 20px;
+	width: 100px;
+	height: 30px;
+	padding: 0px;
+}
+
+#header {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+#infoContainer {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	height: 70px;
+	margin-bottom: 10px;
+}
+
+#moneyButton {
+	display: inline-block;
+	height: 70px;
+	width: 200px;
+	background-color: #D4DAFC;
+	font-size: 16px;
+	margin-right: 10px;
+	vertical-align: top;
+}
+
+#moneyButtonText {
+	line-height: 70px;
+}
+
+#info {
+	display: inline-block;
+	text-align: left;
+	white-space: nowrap;
+	margin-bottom: -8px;
+}
+
+#moneyTable {
+	float: left;
+	display: inline-block;
+}
+
+#moneyTable2 {
+	float: right;
+	display: inline-block;
+}
+
+#inventoryTable, #row5, #row6, #row7{
+	margin-left: auto;
+	margin-right: auto;
+	width: 90%;
+}
+
+#row5, #row6, #row7 {
+	margin-top: -2px;
+	padding-top: 0px;
+}
+
+#numToBuyContainer, #numToBuyContainer2{
+	margin-top: 30px;
+	display: block;
+	text-align: center; 
+}
+
+#numToBuy, #numToBuy2 {
+	width: 100px;
+	text-align: center;
+	background-color: #D4DAFC;
+	border-radius: 5px;
+	display: inline-block;
+}
+
+.submitNumToBuy{
+	width: auto;
+	padding: 1px 5px;
+	font-weight: bold;
+}
+
+#optionTable{
+	margin: auto;
+}
+
+#reset {
+	text-align: center;
+	width: 200px;
+	font-size: 30px;
+	display: inline-block;
+	margin-bottom: 20px;
+}
+
+#resetTable{
+	display: inline;
+	margin: auto;
+	float: left;
+}
+
+#statAchievementContainer {
+	float: left;
+	width: 45%;
+}
+
+#chartStuff{
+	float: right;
+}
+
+#chartContainer{
+	height: 400px;
+	width: 600px;
+}
+
+#chartAxisToggle, #submitChartSettings{
+	float: right;
+	clear: both;
+	text-align: center;
+	margin-top: 10px;
+	padding: 1px 5px;
+	font-weight: bold;
+	width: 150px;
+}
+
+#chartPointDelay, #chartNumPoints {
+	width: 200px;
+	margin-top: 10px;
+}
+
+#submitChartSettings {
+	display: inline-block;
+}
+
+#chartSettings {
+	float: right;
+	clear: both;
+}
+
+#achievementContainer{
+	clear: left;
+	margin-top: 10px;
+}
+
+#prestige {
+	float: left;
+	margin-bottom: 10px;
+}
+
+#resetCurrTable {
+	display: block;
+	border-collapse: collapse;
+	margin-top: 4px;
+}
+
+#prestigeTable thead, #resetCurrTable thead{
+	font-weight: bold;
+}
+
+#prestigeTable tr td{
+	padding-left: 20px;
+	padding-right: 20px;
+	height: 37px;
+}
+
+#resetCurrTable tr {
+	padding: 0px;
+	margin: 0px;
+}
+
+#resetCurrTable tr td {
+	width: 250px;
+	height: 35px;
+	padding: 0px;
+}
+
+#resetCurrTable tr td .buttonLit, #resetCurrTable tr td .button {
+	height: 35px;
+	width: 50px;
+	font-size: 35px;
+	line-height: 35px;
+	text-align: center;
+	display: inline-block;
+	margin: 2px;
+	float: left;
+}
+
+#prestigeDataTable {
+	clear: both;
+}
+
+#bottom{
+	clear: both;
+	font-size: 12px;
+	text-align: center;
+}
+	
+
+/* first line of buttons*/
+
+.button h3 {
+	text-align: center;
+	margin: 0px;
+}
+
+.buttonLit h3 {
+	text-align: center;
+	margin: 0px;
+}
+
+/* second line of buttons */
+
+.button p:nth-child(2) {
+	text-align: center;
+	margin: 0px;
+	font-size: 13px;
+}
+
+.buttonLit p:nth-child(2) {
+	text-align: center;
+	margin: 0px;
+	font-size: 13px;
+}
+
+/* last line of buttons */
+
+.button p:last-child {
+	text-align: center;
+	margin: 0px;
+}
+
+.buttonLit p:last-child {
+	text-align: center;
+	margin: 0px;
+}
+
+/* buttons that aren't lit */
+
+.button, .buttonLit {
+	border: 1px solid black;
+	border-radius: 5px;
+	cursor: pointer;
+	width: 18%;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+}
+
+.button {
+	background-color: #AAAAAA;
+}
+
+/* buttons that are lit */
+
+.buttonLit {
+	background-color: #D4DAFC;
+}
+
+.buttonLit:hover {
+	background-color: #ADBAFF;
+}
+
+.option {
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 100px;
+	text-align: center;
+	font-size: 30px;
+	width: 250px;
+	height: 20px;
+}
+
+.achievement {
+	border: 1px solid black;
+	border-radius: 5px;
+	display: inline-block;
+	margin: 1px;
+}
+
+/* General classes */
+
+.spacer {
+	width: 1%;
+}
+
+.strong{
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+/* Tab appearance */
+
+/* Centers the tabs */
+#tabs .ui-tabs-nav {
+	text-align: center;
+}
+
+#tabs .ui-tabs-nav li {
+	float: none;
+	display: inline-block;
+}
+
+/* Other appearance stuff */
+#tabs { 
+    background: transparent; 
+    border: none; 
+} 
+#tabs .ui-widget-header { 
+    background: transparent; 
+    border: none; 
+    border-bottom: 1px solid #c0c0c0; 
+    -moz-border-radius: 0px; 
+    -webkit-border-radius: 0px; 
+    border-radius: 0px; 
+} 
+
+#tabs .ui-tabs-nav .ui-state-default { 
+    background: transparent; 
+    border: none; 
+} 
+#tabs .ui-tabs-nav .ui-state-active { 
+    background: transparent no-repeat bottom center; 
+    border: none; 
+} 
+#tabs .ui-tabs-nav .ui-state-default a { 
+    color: #AAAAAA; 
+} 
+#tabs .ui-tabs-nav .ui-state-active a { 
+    color: #000000; 
+}
+
+.ui-tooltip {
+	-webkit-box-shadow: 0 0 0;
+	box-shadow: 0 0 0;
+	background-color: #ffffff;
+}
