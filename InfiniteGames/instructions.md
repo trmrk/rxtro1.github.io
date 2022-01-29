@@ -9,16 +9,14 @@ Have Fun!
 
 [] Directory ID's []
 
-rxtro1.github.io/InfiniteGames/CaseClicker
+https://rxtro1.github.io/InfiniteGames/CaseClicker/
 
-rxtro1.github.io/InfiniteGames/dolla_idle_game
+https://rxtro1.github.io/InfiniteGames/dolla_idle_game/
 
-rxtro1.github.io/InfiniteGames/Electric-Clicker
+https://rxtro1.github.io/InfiniteGames/Electric-Clicker/
 
-rxtro1.github.io/InfiniteGames/Programming-Challenge
+https://rxtro1.github.io/InfiniteGames/Programming-Challenge/
 
-rxtro1.github.io/InfiniteGames/SharkGame-idle
-
-rxtro1.github.io/InfiniteGames/DerivativeClicker
+https://rxtro1.github.io/InfiniteGames/SharkGame-idle/
 
 More Coming Soon...
