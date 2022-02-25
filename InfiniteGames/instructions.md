@@ -15,8 +15,4 @@ https://rxtro1.github.io/InfiniteGames/dolla_idle_game/
 
 https://rxtro1.github.io/InfiniteGames/Electric-Clicker/
 
-https://rxtro1.github.io/InfiniteGames/Programming-Challenge/
-
-https://rxtro1.github.io/InfiniteGames/SharkGame-idle/
-
 More Coming Soon...
