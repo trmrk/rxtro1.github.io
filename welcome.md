@@ -6,8 +6,15 @@ I hope that you find some of my websites and have fun!
 
 peace ^-^
 
--=Socials =-
-Discord:★彡 🇷🇽🇹🇷🇴 彡★#3522
+-= Socials =-
+Discord:rxtro.exe#3522
+
 Youtube: rxtro beats
+
+-= Games =-
+rxtro1.github.io/InfiniteGames/instructions.md
+rxtro1.github.io/MelonEngine/games.html
+rxtro1.github.io/SusWeb/susweb.html
+rxtro1.github.io/fgfs/games.html
 
 More Coming Soon...
