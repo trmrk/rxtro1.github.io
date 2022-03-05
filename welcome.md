@@ -9,7 +9,7 @@ peace ^-^
 
 -= Socials =-
 
-Discord:rxtro.exe#3522
+Discord: rxtro.exe#3522
 
 Youtube: rxtro beats
 
