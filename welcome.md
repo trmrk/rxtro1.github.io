@@ -13,14 +13,16 @@ Discord: rxtro.exe#3522
 
 Youtube: rxtro beats
 
--= Games =-
+-= GameRepo's =-
 
-rxtro1.github.io/InfiniteGames/instructions.md
+[InfiniteGames](rxtro1.github.io/InfiniteGames/instructions.md)
 
-rxtro1.github.io/MelonEngine/games.html
+[MelonGames](rxtro1.github.io/MelonEngine/games.html)
 
-rxtro1.github.io/SusWeb/susweb.html
+[Sus Web](rxtro1.github.io/SusWeb/susweb.html)
 
-rxtro1.github.io/fgfs/games.html
+[FGFS](rxtro1.github.io/fgfs/games.html)
+
+[Wordle Unlimited](https://rxtro1.github.io/wordleunlimited/)
 
 More Coming Soon...
