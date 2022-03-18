@@ -25,6 +25,6 @@ Youtube: rxtro beats
 
 [Wordle Unlimited](https://rxtro1.github.io/wordleunlimited/)
 
-[SpaceLichOmega2](https://rxtro1.github.io/spacelichomega2/)
+[CookieClicker Classic](https://rxtro1.github.io/cookieclicker/classic/)
 
 More Coming Soon...
