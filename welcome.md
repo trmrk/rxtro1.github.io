@@ -29,6 +29,6 @@ Youtube: rxtro beats
 
 -= BetterDiscord Themes =-
 
-[CloudyMetro](https://drive.google.com/uc?export=download&id=1-Iyl05Te94ashuJlaD0MgzgDpVfPjGPg)
+[CloudyMetro v1.4](https://drive.google.com/uc?export=download&id=1-Iyl05Te94ashuJlaD0MgzgDpVfPjGPg)
 
 More Coming Soon...
