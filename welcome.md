@@ -27,4 +27,8 @@ Youtube: rxtro beats
 
 [CookieClicker Classic](https://rxtro1.github.io/cookieclicker/classic/)
 
+-= BetterDiscord Themes =-
+
+[CloudyMetro](https://drive.google.com/uc?export=download&id=1-Iyl05Te94ashuJlaD0MgzgDpVfPjGPg)
+
 More Coming Soon...
