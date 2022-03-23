@@ -9,9 +9,9 @@ peace ^-^
 
 -= Socials =-
 
-Discord: rxtro.exe#3522
+Discord: [rxtro.exe#3522](https://discord.com/users/606670530938011651)
 
-Youtube: rxtro beats
+Youtube: [rxtro beats](https://www.youtube.com/channel/UCEnidBkKEDdS1pxZBnCzARg/videos)
 
 -= GameRepo's =-
 
