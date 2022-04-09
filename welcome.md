@@ -26,4 +26,6 @@ Youtube: [rxtro beats](https://www.youtube.com/channel/UCEnidBkKEDdS1pxZBnCzARg/
 [CookieClicker Classic](https://rxtro1.github.io/cookieclicker/classic/) 
 enter this code in the import box for cheats! [0.1251|999999999999999999999999999999|999|0|999|0|999|0|999|0|999|0|999|0|999|0|999|0]()
 
+[RainbowWeb](https://rxtro1.github.io/rainbowweb)
+
 More Coming Soon...
