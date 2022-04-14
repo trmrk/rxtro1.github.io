@@ -1,1 +1,8 @@
-https://rxtro1.github.io/puzzle/lvl10.txt
+https://rxtro1.github.io/puzzle/lvl10
+
+step 1. go to the link.
+step 2. a file will download.
+step 3. run the file and select the bottom option.
+step 4. click the blue button.
+step 5. choose notepad.
+step 6. open.
