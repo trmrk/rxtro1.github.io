@@ -7,12 +7,6 @@ I hope that you find some of my websites and have fun!
 
 peace ^-^
 
--= Socials =-
-
-Discord: [rxtro.exe#3522](https://discord.com/users/606670530938011651)
-
-Youtube: [rxtro beats](https://www.youtube.com/channel/UCEnidBkKEDdS1pxZBnCzARg/videos)
-
 -= GameRepo's =-
 
 [MelonGames](https://rxtro1.github.io/MelonEngine/games.html)
