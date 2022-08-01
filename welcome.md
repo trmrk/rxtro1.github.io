@@ -6,13 +6,7 @@
 
 𝙮𝙤𝙪𝙩𝙪𝙗𝙚: [error](https://www.youtube.com/channel/UCEnidBkKEDdS1pxZBnCzARg/about)
 
-
-!-------------------!
-
-!===gort the capy===!
-
-!-------------------!
-
+=====================
 
 *= !𝙨𝙝𝙞𝙩𝙥𝙤𝙨𝙩𝙨! =*
 
