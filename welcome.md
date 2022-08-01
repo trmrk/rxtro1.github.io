@@ -21,6 +21,3 @@
 [v5](https://cdn.discordapp.com/attachments/820506318934376458/1003581223353987072/shitpost_v5.mp4)
 
 [v6](https://cdn.discordapp.com/attachments/820506318934376458/1003581223710511155/shitpost_v6.mp4)
-
-
-𝙢𝙤𝙧𝙚 𝙘𝙤𝙢𝙞𝙣𝙜 𝙨𝙤𝙤𝙣!
