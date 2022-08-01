@@ -21,5 +21,4 @@
 [v5](https://cdn.discordapp.com/attachments/998447780383170691/1003567731091701811/trim.8BE597D8-241E-478E-BBC8-260C00590FA9.mov)
 
 [v6](https://cdn.discordapp.com/attachments/998447780383170691/1003567785483440238/life_could_be_a_dream_-_Anime.mp4)
-
 𝙢𝙤𝙧𝙚 𝙘𝙤𝙢𝙞𝙣𝙜 𝙨𝙤𝙤𝙣!
