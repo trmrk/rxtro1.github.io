@@ -10,15 +10,16 @@
 
 *= !𝙨𝙝𝙞𝙩𝙥𝙤𝙨𝙩𝙨! =*
 
-[v1](https://cdn.discordapp.com/attachments/998447780383170691/1003573349265453086/bruh_bouncy.webm)
+[v1](https://cdn.discordapp.com/attachments/820506318934376458/1003581221894361148/shitpost_v1.mov)
 
-[v2](https://cdn.discordapp.com/attachments/998447780383170691/1003567818308075552/16e4652bd2df607ee34b5d0dc1c03488.mp4)
+[v2](https://cdn.discordapp.com/attachments/820506318934376458/1003581222196355162/shitpost_v2.mp4)
 
-[v3](https://cdn.discordapp.com/attachments/998447780383170691/1003567730420629515/Yoo.mp4)
+[v3](https://cdn.discordapp.com/attachments/820506318934376458/1003581222515130378/shitpost_v3.webm)
 
-[v4](https://cdn.discordapp.com/attachments/983572368612016159/1003551926429950022/v12044gd0000cbj83ejc77u1st2gtju0.mp4)
+[v4](https://cdn.discordapp.com/attachments/820506318934376458/1003581222993268766/shitpost_v4.mp4)
 
-[v5](https://cdn.discordapp.com/attachments/998447780383170691/1003567731091701811/trim.8BE597D8-241E-478E-BBC8-260C00590FA9.mov)
+[v5](https://cdn.discordapp.com/attachments/820506318934376458/1003581223353987072/shitpost_v5.mp4)
 
-[v6](https://cdn.discordapp.com/attachments/998447780383170691/1003567785483440238/life_could_be_a_dream_-_Anime.mp4)
+[v6](https://cdn.discordapp.com/attachments/820506318934376458/1003581223710511155/shitpost_v6.mp4)
+
 𝙢𝙤𝙧𝙚 𝙘𝙤𝙢𝙞𝙣𝙜 𝙨𝙤𝙤𝙣!
