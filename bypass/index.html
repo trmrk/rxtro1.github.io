@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Bypasser</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        form {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 500px;
+        }
+        input[type="url"] {
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 10px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            animation: glow 1s infinite alternate;
+        }
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 10px #4CAF50;
+            }
+            to {
+                box-shadow: 0 0 20px #4CAF50;
+            }
+        }
+        button:hover {
+            background-color: #3e8e41;
+            animation: none;
+        }
+        #result {
+            font-size: 18px;
+            color: #666;
+            margin-top: 10px;
+        }
+        /* Credits footer */
+        footer {
+            background-color: #f5f5f5;
+            padding: 20px;
+            text-align: center;
+            margin-top: auto;
+            width: 100%;
+            border-top: 2px solid #ddd;
+            font-family: "Arial Black", sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <form>
+            <h1>Link Bypasser</h1>
+            <input type="url" id="linkInput" placeholder="Enter URL to bypass">
+            <button id="bypassButton">Bypass Link</button>
+            <div id="result"></div>
+        </form>
+    </main>
+
+    <!-- Credits footer -->
+    <footer>
+        <p>Credits: Shehajeez, Neyoshi, Rlow, Icme</p>
+    </footer>
+
+    <script>
+        const bypassButton = document.getElementById('bypassButton');
+        const linkInput = document.getElementById('linkInput');
+        const resultElement = document.getElementById('result');
+    
+        bypassButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            bypassLink();
+        });
+    
+        function bypassLink() {
+            const apiUrl = 'http://45.88.188.104:6087/api/adlinks/bypass';
+            const urlToBypass = linkInput.value.trim();
+    
+            if (!urlToBypass) {
+                resultElement.innerText = 'Please enter a URL to bypass.';
+                return;
+            }
+    
+            fetch(`${apiUrl}?url=${encodeURIComponent(urlToBypass)}`)
+               .then(response => response.json())
+               .then(data => {
+                    if (data.bypassed) {
+                        const bypassedLink = document.createElement('a');
+                        bypassedLink.href = data.bypassed;
+                        bypassedLink.innerText = 'Bypassed Link';
+                        bypassedLink.classList.add('bypassed-link');
+                        resultElement.innerHTML = '';
+                        resultElement.appendChild(bypassedLink);
+                    } else {
+                        resultElement.innerText = 'Error: Unable to bypass link.';
+                    }
+                })
+               .catch(error => {                   
+                resultElement.innerText = `Error: ${error.message}`;
+            });
+        }  
+    </script>
+</body>
+</html>
